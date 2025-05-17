@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-glow: #1EB4E2;
+  --secondary-glow: rgb(45, 212, 191);
+  --dark-bg: #020420;
+  --card-bg: rgba(22, 24, 29, 0.7);
+}
+
+@layer base {
+  body {
+    @apply bg-[#020420] text-white m-0 min-h-screen;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  /* Custom Scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+
+  /* Dark mode table styles */
+  .table-auto {
+    @apply dark:border-gray-700;
+  }
+
+  .table-auto th {
+    @apply dark:bg-gray-800 dark:text-gray-200;
+  }
+
+  .table-auto td {
+    @apply dark:border-gray-700 dark:text-gray-300;
+  }
+
+  /* Dark mode form styles */
+  input, select, textarea {
+    @apply dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 dark:placeholder-gray-500;
+  }
+
+  /* Dark mode card styles */
+  .card {
+    @apply dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200;
+  }
+}
+
+@layer components {
+  .glow-text {
+    @apply bg-gradient-to-r from-[#1EB4E2] to-[#2DD4BF] bg-clip-text text-transparent;
+  }
+  
+  .hero-gradient {
+    @apply absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-[#020420] to-[#020420] opacity-90;
+  }
+
+  .card-gradient {
+    background: linear-gradient(180deg, var(--card-bg) 0%, rgba(22, 24, 29, 0.9) 100%);
+    backdrop-filter: blur(10px);
+  }
+
+  .feature-card {
+    @apply p-6 rounded-xl card-gradient border border-gray-800 hover:border-[#1EB4E2]/30 transition-all duration-300;
+  }
+
+  .primary-button {
+    @apply px-6 py-3 bg-gradient-to-r from-[#1EB4E2] to-[#2DD4BF] rounded-lg font-medium 
+           hover:opacity-90 transition-opacity duration-200 text-white;
+  }
+
+  .secondary-button {
+    @apply px-6 py-3 bg-white/10 rounded-lg font-medium hover:bg-white/20 
+           transition-colors duration-200 border border-white/20;
+  }
+
+  .nav-link {
+    @apply text-gray-400 hover:text-white transition-colors duration-200;
+  }
+
+  /* Dark mode specific components */
+  .card {
+    @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+           shadow-sm rounded-lg transition-colors duration-200;
+  }
+
+  .data-card {
+    @apply bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 
+           dark:border-gray-700 transition-colors duration-200;
+  }
+
+  .stat-card {
+    @apply bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 
+           dark:border-gray-700 transition-colors duration-200;
+  }
+
+  .form-input {
+    @apply w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 
+           dark:border-gray-700 rounded-md shadow-sm focus:ring-2 focus:ring-primary 
+           focus:border-transparent dark:text-gray-200 transition-colors duration-200;
+  }
+
+  .form-select {
+    @apply w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 
+           dark:border-gray-700 rounded-md shadow-sm focus:ring-2 focus:ring-primary 
+           focus:border-transparent dark:text-gray-200 transition-colors duration-200;
+  }
+
+  .form-checkbox {
+    @apply rounded border-gray-300 dark:border-gray-700 text-primary 
+           focus:ring-primary dark:bg-gray-800 transition-colors duration-200;
+  }
+
+  .table-container {
+    @apply w-full bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden 
+           transition-colors duration-200;
+  }
+
+  .table-header {
+    @apply px-6 py-3 bg-gray-50 dark:bg-gray-900 text-left text-xs font-medium 
+           text-gray-500 dark:text-gray-400 uppercase tracking-wider 
+           transition-colors duration-200;
+  }
+
+  .table-cell {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200 
+           transition-colors duration-200;
+  }
+
+  .table-row {
+    @apply hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200;
+  }
+
+  .badge {
+    @apply px-2 py-1 text-xs font-medium rounded-full transition-colors duration-200;
+  }
+
+  .badge-success {
+    @apply bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200;
+  }
+
+  .badge-warning {
+    @apply bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200;
+  }
+
+  .badge-danger {
+    @apply bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200;
+  }
+
+  .badge-info {
+    @apply bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200;
+  }
+
+  .modal {
+    @apply fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 flex items-center 
+           justify-center z-50 transition-opacity duration-200;
+  }
+
+  .modal-content {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-xl transition-colors duration-200;
+  }
+
+  .dropdown-menu {
+    @apply absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 
+           ring-1 ring-black ring-opacity-5 transition-colors duration-200;
+  }
+
+  .dropdown-item {
+    @apply block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 
+           hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200;
+  }
+}
+
+.code-window {
+  @apply bg-[#1E1E1E] rounded-lg p-4 font-mono text-sm;
+  box-shadow: 0 0 30px rgba(30, 180, 226, 0.1);
+}
+
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+  opacity: 0.1;
+  z-index: -1;
+}
+
+/* Chart styles for dark mode */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  @apply stroke-gray-200 dark:stroke-gray-700;
+}
+
+.recharts-text {
+  @apply fill-gray-600 dark:fill-gray-400;
+}
+
+.recharts-tooltip-wrapper {
+  @apply !bg-white dark:!bg-gray-800 !border-gray-200 dark:!border-gray-700 
+         !text-gray-900 dark:!text-gray-200;
+}
+
+/* PDF Viewer Styles */
+.s3-pdf-viewer {
+  position: relative;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f8f8;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.error-banner {
+  padding: 16px;
+  background: #ffebee;
+  color: #b71c1c;
+  border-radius: 4px;
+  margin: 16px;
+  font-family: monospace;
+}
+
+.dark .s3-pdf-viewer {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.dark .error-banner {
+  background: #4a1c1c;
+  color: #ffd0d0;
+}
+
+.pdf-iframe-container {
+  height: 100vh;
+  width: 100%;
+}
+
+.dark .pdf-iframe-container {
+  background-color: #1f2937;
+}
